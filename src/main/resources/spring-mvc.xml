@@ -13,7 +13,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- 扫描controller（controller层注入） -->
-    <context:component-scan base-package="admin.controller"/>
+    <context:component-scan base-package="admin.controller,admin.service"/>
 
     <!-- 会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,是spring MVC为@Controllers分发请求所必须的 -->
     <!-- 指定自己定义的validator -->
@@ -71,7 +71,7 @@
 
     <!-- 对模型视图添加前后缀 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          p:prefix="/WEB-INF/" p:suffix=".jsp"/>
+          p:prefix="/jsp/" p:suffix=".jsp"/>
 
     <!-- 配置springMVC处理上传文件的信息 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

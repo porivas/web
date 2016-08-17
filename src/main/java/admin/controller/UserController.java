@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import admin.model.Users;
 import admin.service.UsersService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -18,10 +19,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.eliteams.quick4j.web.model.User;
-import com.eliteams.quick4j.web.security.PermissionSign;
-import com.eliteams.quick4j.web.security.RoleSign;
-import com.eliteams.quick4j.web.service.UserService;
+import admin.model.Users;
+import admin.security.PermissionSign;
+import admin.security.RoleSign;
+import admin.service.UsersService;
 
 /**
  * 用户控制器
@@ -41,8 +42,8 @@ public class UserController {
      * @param result
      * @return
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@Valid User user, BindingResult result, Model model, HttpServletRequest request) {
+    @RequestMapping(value = "/login.do")
+    public String login(@Valid Users user, BindingResult result, Model model, HttpServletRequest request) {
         try {
             Subject subject = SecurityUtils.getSubject();
             // 已登陆则 跳到首页
@@ -54,14 +55,14 @@ public class UserController {
                 return "login";
             }
             // 身份验证
-            subject.login(new UsernamePasswordToken(user.getUsername(), user.getPassword()));
+            subject.login(new UsernamePasswordToken(user.getUsername(), user.getPwd()));
             // 验证成功在Session中保存用户信息
-            final User authUserInfo = userService.selectByUsername(user.getUsername());
+            final Users authUserInfo = userService.selectByUsername(user.getUsername());
             request.getSession().setAttribute("userInfo", authUserInfo);
         } catch (AuthenticationException e) {
             // 身份验证失败
             model.addAttribute("error", "用户名或密码错误 ！");
-            return "login";
+            return "login.jsp";
         }
         return "redirect:/";
     }
@@ -96,7 +97,7 @@ public class UserController {
      */
     @RequestMapping(value = "/create")
     @ResponseBody
-    @RequiresPermissions(value = PermissionSign.USER_CREATE)
+    @RequiresPermissions(value = PermissionSign.ADMIN_WRITE)
     public String create() {
         return "拥有user:create权限,能访问";
     }

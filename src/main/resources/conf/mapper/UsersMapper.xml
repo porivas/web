@@ -309,7 +309,7 @@
   </select>
 
   <!-- 分页条件查询 -->
-  <select id="selectByExampleAndPage" resultMap="BaseResultMap" parameterType="com.eliteams.quick4j.web.model.UserExample">
+  <select id="selectByExampleAndPage" resultMap="BaseResultMap" parameterType="admin.model.UsersExample">
     select
     <if test="distinct">
       distinct

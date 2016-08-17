@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<form id="loginForm" action="/login" method="post">
+<form id="loginForm" action="/user/login.do" method="post">
 
 <div class="container">
     <div class="row clearfix">
@@ -32,20 +32,18 @@
         <div class="col-md-4 column">
         </div>
         <div class="col-md-4 column">
-            <form role="form">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">用户名</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" />
+                    <label for="username">用户名</label>
+                    <input type="text" size="25" class="form-control" id="username" name="username" placeholder="用户名"/>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">密码</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" />
+                    <label for="password">密码</label>
+                    <input type="password" size="25" class="form-control" id="password" name="pwd" placeholder="密码"/>
                 </div>
 
 
 
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+                <button type="submit" class="btn btn-default">登录</button>
         </div>
         <div class="col-md-4 column">
         </div>

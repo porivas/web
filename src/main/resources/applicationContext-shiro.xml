@@ -10,7 +10,7 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login.jsp"/>
-        <property name="successUrl" value="/jsp/main"/>
+        <property name="successUrl" value="/jsp/main.jsp"/>
         <property name="unauthorizedUrl" value="/401"/>
         <property name="filterChainDefinitions">
             <value>
@@ -23,7 +23,7 @@
                 /404 = anon
                 /500 = anon
                 <!-- 其他资源需要认证 -->
-                /** = authc
+                /jsp/** = authc
             </value>
         </property>
     </bean>
