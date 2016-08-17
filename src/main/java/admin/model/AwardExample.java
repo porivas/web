@@ -222,6 +222,66 @@ public class AwardExample {
             addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
+        public Criteria andAwardIdIsNull() {
+            addCriterion("award_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdIsNotNull() {
+            addCriterion("award_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdEqualTo(Integer value) {
+            addCriterion("award_id =", value, "awardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdNotEqualTo(Integer value) {
+            addCriterion("award_id <>", value, "awardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdGreaterThan(Integer value) {
+            addCriterion("award_id >", value, "awardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("award_id >=", value, "awardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdLessThan(Integer value) {
+            addCriterion("award_id <", value, "awardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdLessThanOrEqualTo(Integer value) {
+            addCriterion("award_id <=", value, "awardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdIn(List<Integer> values) {
+            addCriterion("award_id in", values, "awardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdNotIn(List<Integer> values) {
+            addCriterion("award_id not in", values, "awardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdBetween(Integer value1, Integer value2) {
+            addCriterion("award_id between", value1, value2, "awardId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAwardIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("award_id not between", value1, value2, "awardId");
+            return (Criteria) this;
+        }
+
         public Criteria andAwardNameIsNull() {
             addCriterion("award_name is null");
             return (Criteria) this;

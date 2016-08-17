@@ -18,7 +18,7 @@
 </head>
 <body>
 
-
+<form id="loginForm" action="/login" method="post">
 
 <div class="container">
     <div class="row clearfix">
@@ -56,7 +56,7 @@
     </div>
 </div>
 
-
+</form>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <%--<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>

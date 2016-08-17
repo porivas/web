@@ -87,7 +87,9 @@
 
 
 
+<!--
         <table tableName="award" schema="hot">
+-->
 
             <!-- optional   , only for mybatis3 runtime
                  自动生成的键值（identity,或者序列值）
@@ -127,7 +129,9 @@
                     delimitedColumnName:true ,匹配column的值和数据库列的名称 大小写完全匹配，false 忽略大小写匹配
                     是否限定表的列名，即固定表列在Model中的名称
             -->
+<!--
             <ignoreColumn column="award_id"  delimitedColumnName="true" />
+-->
 
 
             <!--optional.覆盖MBG对Model 的生成规则
@@ -140,6 +144,20 @@
             -->
             <!--<columnOverride column="" javaType=""	jdbcType=""	typeHandler=""	delimitedColumnName="" />-->
 
-        </table>
+     <!--   </table>-->
+               <table tableName="role" schema="hot">
+                  <generatedKey column="role_id" sqlStatement="MySql" identity="" type="pre"/>
+               </table>
+               <table tableName="permission" schema="hot">
+                  <generatedKey column="permission_id" sqlStatement="MySql" identity="" type="pre"/>
+               </table>
+<!--
+               <table tableName="permission" schema="hot">
+                   <ignoreColumn column="role_id"  delimitedColumnName="true" />
+               </table>
+
+               <table tableName="permission" schema="hot">
+                   <ignoreColumn column="permission_id"  delimitedColumnName="true" />
+               </table>-->
     </context>
 </generatorConfiguration>
