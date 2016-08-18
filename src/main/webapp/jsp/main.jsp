@@ -14,57 +14,74 @@
 <div class="container">
   <div class="row clearfix">
     <div class="col-md-12 column">
+      <div class="jumbotron"class="jumbotron" style="text-align:center;background-color:#C6E2FF">
+        <h1>商户管理</h1>
+      </div>
     </div>
   </div>
   <div class="row clearfix">
     <div class="col-md-12 column">
       <ul class="nav nav-pills">
         <li class="active">
-          <a href="#">首页</a>
+          <a href="main_content.jsp" target="iframe_a">首页</a>
+        </li>
+        <li>
+          <a href="#course" target="iframe_a">课程</a>
         </li>
         <li>
           <a href="#">场馆</a>
         </li>
-        <li class="disabled">
-          <a href="#">教练</a>
+        <li>
+          <a href="coach/list.jsp"  target="iframe_a">教练</a>
         </li>
-        <li class="dropdown pull-right">
-          <a href="#" data-toggle="dropdown" class="dropdown-toggle">下拉<strong class="caret"></strong></a>
+        <li>
+          <a href="#">订单</a>
+        </li>
+        <li>
+          <a href="#">运动</a>
+        </li>
+        <li>
+          <a href="#">资质</a>
+        </li>
+        <li>
+          <a href="#">奖项</a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            用户及权限 <span class="caret"></span>
+          </a>
           <ul class="dropdown-menu">
-            <li>
-              <a href="#">操作</a>
-            </li>
-            <li>
-              <a href="#">设置栏目</a>
-            </li>
-            <li>
-              <a href="#">更多设置</a>
-            </li>
-            <li class="divider">
-            </li>
-            <li>
-              <a href="#">分割线</a>
-            </li>
+            <li><a href="#">用户</a></li>
+            <li><a href="#">角色</a></li>
+            <li><a href="#">功能</a></li>
           </ul>
         </li>
+        <li>
+          <a href="#">场馆类型</a>
+        </li>
+
+
       </ul>
       <ul class="breadcrumb">
         <li>
-          <a href="#">Home</a>
+          <a href="#">主页</a>
         </li>
         <li>
-          <a href="#">Library</a>
+          <a href="#">板块</a>
         </li>
         <li class="active">
-          Data
+          操作
         </li>
       </ul>
     </div>
   </div>
-  <div class="row clearfix">
+  <div class="row clearfix" id="content">
     <div class="col-md-12 column">
+      <iframe src="main_content.jsp" name="iframe_a" frameborder="0" height="100%" width="100%"></iframe>
     </div>
   </div>
+
+
 </div>
 
 <!--[if lt IE 9]>

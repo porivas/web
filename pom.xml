@@ -11,7 +11,7 @@
     <!-- base setting -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.locales>zh_CN</project.build.locales>
-    <project.build.jdk>1.7</project.build.jdk>
+    <project.build.jdk>1.8</project.build.jdk>
 
     <!-- plugin setting -->
     <mybatis.generator.generatorConfig.xml>${basedir}/src/test/resources/generatorConfig.xml</mybatis.generator.generatorConfig.xml>
@@ -304,6 +304,16 @@
         <configuration>
           <verbose>true</verbose>
           <overwrite>true</overwrite>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
         </configuration>
       </plugin>
     </plugins>
