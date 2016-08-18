@@ -67,7 +67,6 @@
   <listener>
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>
-
   <!-- Spring MVC 核心控制器 DispatcherServlet 配置 -->
   <servlet>
     <servlet-name>dispatcher</servlet-name>

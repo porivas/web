@@ -304,8 +304,8 @@
   <select id="authentication" resultMap="BaseResultMap" parameterType="map">
     select
     <include refid="Base_Column_List" />
-    from user
-    where username = #{record.username,jdbcType=VARCHAR} and password = #{record.password,jdbcType=CHAR}
+    from users
+    where username = #{record.username,jdbcType=VARCHAR} and pwd = #{record.pwd,jdbcType=CHAR}
   </select>
 
   <!-- 分页条件查询 -->
@@ -315,7 +315,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from user
+    from users
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

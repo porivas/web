@@ -128,10 +128,10 @@ public interface RoleMapper extends GenericDao {
     int updateByPrimaryKey(Role record);
 
     /**
-     * 通过用户userId 查询用户 拥有的角色
+     * 通过用户id 查询用户 拥有的角色
      *
      * @param userId
      * @return
      */
-    List<Role> selectRolesByUserId(int userId);
+    List<Role> selectRolesByUserId(Integer userId);
 }

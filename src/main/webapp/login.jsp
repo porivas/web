@@ -1,19 +1,17 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: chenchen
-  Date: 16/8/16
-  Time: 下午10:47
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
 
-    <title>Title</title>
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <title>登录</title>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="/bootstrap/css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
- <%--   <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+<%--   <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-theme.min.css" rel="stylesheet">--%>
 </head>
 <body>
@@ -33,8 +31,8 @@
         </div>
         <div class="col-md-4 column">
                 <div class="form-group">
-                    <label for="username">用户名</label>
-                    <input type="text" size="25" class="form-control" id="username" name="username" placeholder="用户名"/>
+                    <label for="username">用户</label>
+                    <input type="text"  class="form-control" id="username" name="username" placeholder="用户名"/>
                 </div>
                 <div class="form-group">
                     <label for="password">密码</label>
@@ -61,9 +59,22 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>--%>
-<script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+<script src="/bootstrap/js/html5shiv.js" type="text/javascript"></script>
+<script src="/bootstrap/js/respond.js" type="text/javascript"></script>
+<![endif]-->
+
 <script src="/bootstrap/js/jquery-3.1.0.min.js" type="text/javascript"></script>
 <script src="/bootstrap/js/jquery-migrate-1.4.1.min.js" type="text/javascript"></script>
 <script src="/bootstrap/js/jquery-migrate-3.0.0.min.js" type="text/javascript"></script>
+<script src="/bootstrap/js/jquery.placeholder.js" type="text/javascript"></script>
+<script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $('input, textarea').placeholder();
+    });
+</script>
+
 </body>
 </html>

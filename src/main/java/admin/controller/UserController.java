@@ -48,7 +48,7 @@ public class UserController {
             Subject subject = SecurityUtils.getSubject();
             // 已登陆则 跳到首页
             if (subject.isAuthenticated()) {
-                return "redirect:/";
+                return "redirect:/jsp/main.jsp";
             }
             if (result.hasErrors()) {
                 model.addAttribute("error", "参数错误！");
@@ -61,10 +61,11 @@ public class UserController {
             request.getSession().setAttribute("userInfo", authUserInfo);
         } catch (AuthenticationException e) {
             // 身份验证失败
+            e.printStackTrace();
             model.addAttribute("error", "用户名或密码错误 ！");
             return "login.jsp";
         }
-        return "redirect:/";
+        return "redirect:/jsp/main.jsp";
     }
 
     /**
