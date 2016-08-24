@@ -8,9 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>tle</title>
 </head>
 <body>
-这个是主页,包含个人信息等。dddddd
+<div class="row" id="content">
+
+    这个是主页,包含个人信息等。fdfddsds
+
+</div>
+
 </body>
 </html>

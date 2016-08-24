@@ -1,5 +1,9 @@
 package common.core.generic;
 
+import admin.model.VenuestypeExample;
+
+import java.util.List;
+
 /**
  * 所有自定义Dao的顶级接口, 封装常用的增删查改操作,
  * 可以通过Mybatis Generator Maven 插件自动生成Dao,
@@ -41,5 +45,11 @@ public interface GenericDao<Model, PK> {
      * @return
      */
     Model selectByPrimaryKey(PK id);
+
+
+    <P> List<Model> selectList(P p);
+
+    int deleteByExample(Model model);
+
 
 }

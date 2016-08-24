@@ -12,39 +12,42 @@
 <body>
 
 <div class="container">
-  <div class="row clearfix">
+<%--  <div class="row clearfix">
     <div class="col-md-12 column">
       <div class="jumbotron"class="jumbotron" style="text-align:center;background-color:#C6E2FF">
         <h1>商户管理</h1>
       </div>
     </div>
-  </div>
+  </div>--%>
   <div class="row clearfix">
     <div class="col-md-12 column">
-      <ul class="nav nav-pills">
+      <ul class="nav nav-pills" id="main_pills">
         <li class="active">
-          <a href="main_content.jsp" target="iframe_a">首页</a>
+          <a href="#content"  data-toggle="pill" id="main">首页</a>
         </li>
         <li>
-          <a href="#course" target="iframe_a">课程</a>
+          <a href="#content"  data-toggle="pill" id="course">课程</a>
         </li>
         <li>
-          <a href="#">场馆</a>
+          <a href="#content"  data-toggle="pill" id="venues">场馆</a>
         </li>
         <li>
-          <a href="coach/list.jsp"  target="iframe_a">教练</a>
+          <a href="#content"  data-toggle="pill" id="coach">教练</a>
         </li>
         <li>
-          <a href="#">订单</a>
+          <a href="#content"  data-toggle="pill" id="order">订单</a>
         </li>
         <li>
-          <a href="#">运动</a>
+          <a href="#content"  data-toggle="pill" id="sport">运动</a>
         </li>
         <li>
-          <a href="#">资质</a>
+          <a href="#content"  data-toggle="pill" id="certificate">资质</a>
         </li>
         <li>
-          <a href="#">奖项</a>
+          <a href="#content"  data-toggle="pill" id="award">奖项</a>
+        </li>
+        <li>
+          <a href="#content"  data-toggle="pill" id="venues_type">场馆类型</a>
         </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -56,9 +59,7 @@
             <li><a href="#">功能</a></li>
           </ul>
         </li>
-        <li>
-          <a href="#">场馆类型</a>
-        </li>
+
 
 
       </ul>
@@ -75,10 +76,12 @@
       </ul>
     </div>
   </div>
-  <div class="row clearfix" id="content">
+<%--  <div class="row clearfix" id="content">
     <div class="col-md-12 column">
       <iframe src="main_content.jsp" name="iframe_a" frameborder="0" height="100%" width="100%"></iframe>
     </div>
+  </div>--%>
+  <div class="row clearfix" id="content">
   </div>
 
 
@@ -95,6 +98,19 @@
 <script src="/bootstrap/js/jquery.placeholder.js" type="text/javascript"></script>
 <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+  $(document).ready(function() {
+    $('#content').load("main_content.jsp");
+  })
+
+    $('#main_pills a').click(function (e) {
+  if($(this).attr("id") != "main") {
+    $('#content').load($(this).attr("id") + "/index.jsp");
+  }else{
+    $('#content').load("main_content.jsp");
+
+  }
+})
+
   $(function () {
     $('input, textarea').placeholder();
   });

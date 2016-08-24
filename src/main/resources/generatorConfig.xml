@@ -145,12 +145,12 @@
             <!--<columnOverride column="" javaType=""	jdbcType=""	typeHandler=""	delimitedColumnName="" />-->
 
      <!--   </table>-->
-               <table tableName="role" schema="hot">
-                  <generatedKey column="role_id" sqlStatement="MySql" identity="" type="pre"/>
-               </table>
-               <table tableName="permission" schema="hot">
+              <!-- <table tableName="venuesType" schema="hot">
+                  <generatedKey column="venuesType_id" sqlStatement="MySql" identity="" type="pre"/>
+               </table>-->
+              <!-- <table tableName="permission" schema="hot">
                   <generatedKey column="permission_id" sqlStatement="MySql" identity="" type="pre"/>
-               </table>
+               </table>-->
 <!--
                <table tableName="permission" schema="hot">
                    <ignoreColumn column="role_id"  delimitedColumnName="true" />

@@ -56,6 +56,6 @@ public interface GenericService<Model, PK> {
      *
      * @return 对象集合
      */
-    List<Model> selectList();
+    <P> List<Model> selectList(P p);
 
 }
