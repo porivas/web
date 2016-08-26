@@ -21,51 +21,16 @@ public abstract class GenericServiceImpl<Model, PK> implements GenericService<Mo
      */
     public abstract GenericDao<Model, PK> getDao();
 
-    /**
-     * 插入对象
-     *
-     * @param model 对象
-     */
-    public int insert(Model model) {
-        return getDao().insertSelective(model);
+
+    public <Example>int deleteByExample(Example example){
+        return  getDao().deleteByExample(example);
     }
 
-    /**
-     * 更新对象
-     *
-     * @param model 对象
-     */
-    public int update(Model model) {
-        return getDao().updateByPrimaryKeySelective(model);
+   public int insertSelective(Model record){
+       return getDao().insertSelective(record);
+   }
+
+    public <Example>List<Model> selectByExample(Example example){
+        return getDao().selectByExample(example);
     }
-
-    /**
-     * 通过主键, 删除对象
-     *
-     * @param id 主键
-     */
-    public int delete(PK id) {
-        return getDao().deleteByPrimaryKey(id);
-    }
-
-    /**
-     * 通过主键, 查询对象
-     *
-     * @param id 主键
-     * @return
-     */
-    public Model selectById(PK id) {
-        return getDao().selectByPrimaryKey(id);
-    }
-
-
-    public Model selectOne() {
-        return null;
-    }
-
-    public <P>List<Model> selectList(P p) {
-        return getDao().selectList(p);
-    }
-
-    public Model int delete(Model){return getDao().}
 }

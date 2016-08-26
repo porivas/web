@@ -107,7 +107,7 @@ function search(){
         url:"/venuesType/searchMav.do",
         data:$('#addform').serialize(),
         async: false,
-        //dataType:"html",
+        //dataType:"json",
         error: function(request) {
             $('#myModal').modal('hide');
             alert("失败");
@@ -132,9 +132,9 @@ function deleteMav(array){
         cache: true,
         type: "POST",
         url:"/venuesType/deleteMav.do",
-        data:{arr:array},
+        data:{'arr':array,$('#addform').serialize()},
         async: false,
-        dataType:"json",
+        //dataType:"json",
         error: function(request) {
             alert("失败");
 
@@ -142,6 +142,7 @@ function deleteMav(array){
         success: function(data) {
 
             $('#dataList').html(data);
+            search();
 
         }
     });

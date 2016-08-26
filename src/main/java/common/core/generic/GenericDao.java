@@ -1,6 +1,5 @@
 package common.core.generic;
 
-import admin.model.VenuestypeExample;
 
 import java.util.List;
 
@@ -17,39 +16,11 @@ import java.util.List;
  */
 public interface GenericDao<Model, PK> {
 
-    /**
-     * 插入对象
-     *
-     * @param model 对象
-     */
-    int insertSelective(Model model);
 
-    /**
-     * 更新对象
-     *
-     * @param model 对象
-     */
-    int updateByPrimaryKeySelective(Model model);
+    <Example>int deleteByExample(Example example);
 
-    /**
-     * 通过主键, 删除对象
-     *
-     * @param id 主键
-     */
-    int deleteByPrimaryKey(PK id);
+    int insertSelective(Model record);
 
-    /**
-     * 通过主键, 查询对象
-     *
-     * @param id 主键
-     * @return
-     */
-    Model selectByPrimaryKey(PK id);
-
-
-    <P> List<Model> selectList(P p);
-
-    int deleteByExample(Model model);
-
+    <Example> List<Model> selectByExample(Example example);
 
 }

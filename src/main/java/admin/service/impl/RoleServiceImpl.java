@@ -32,4 +32,5 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
         return roleMapper.selectRolesByUserId(userId);
     }
 
+
 }

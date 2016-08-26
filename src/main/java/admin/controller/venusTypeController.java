@@ -38,7 +38,7 @@ public class venusTypeController {
         List list  = new ArrayList();
         int i = 0;
         try {
-             i = venuesTypeService.insert(venuestype);
+             i = venuesTypeService.insertSelective(venuestype);
 
     } catch (Exception e) {
 
@@ -62,7 +62,7 @@ public class venusTypeController {
                 venuestypeExample.or().andCommentsLike(venuestype.getComments());
             }
 
-            list = venuesTypeService.selectList(venuestypeExample);
+            list = venuesTypeService.selectByExample(venuestypeExample);
 
         } catch (Exception e) {
 
@@ -75,7 +75,16 @@ public class venusTypeController {
 
     @RequestMapping(value="/searchMav.do")
     public ModelAndView searchMav(@Valid Venuestype venuestype){
-        List list  = new ArrayList();
+
+        HashMap<String,List<Venuestype>> map = new HashMap<String,List<Venuestype>>();
+        map.put("datas",search(venuestype));
+
+        return new ModelAndView("/jsp/venues_type/list",map);
+    }
+
+
+    public List<Venuestype> search(@Valid Venuestype venuestype){
+        List<Venuestype>list  = new ArrayList<Venuestype>();
         try {
             VenuestypeExample venuestypeExample = new VenuestypeExample();
             if(venuestype.getVenuestypeName()!=null){
@@ -86,16 +95,15 @@ public class venusTypeController {
                 venuestypeExample.or().andCommentsLike(venuestype.getComments());
             }
 
-            list = venuesTypeService.selectList(venuestypeExample);
+            list =(List<Venuestype>) venuesTypeService.selectByExample(venuestypeExample);
 
         } catch (Exception e) {
 
             e.printStackTrace();
         }
-        HashMap map = new HashMap<String,List>();
-        map.put("datas",list);
 
-        return new ModelAndView("/jsp/venues_type/list",map);
+
+        return list;
     }
 
 
@@ -103,7 +111,8 @@ public class venusTypeController {
     public ModelAndView deleteMav(HttpServletRequest request,
                                   HttpServletResponse response,
                                   ModelMap model,
-                                  @RequestParam(value = "arr[]") Integer[] arr){
+                                  @RequestParam(value = "arr[]") Integer[] arr,
+                                  @RequestParam(value = "forms") Venuestype venuestype){
         int i=0;
         try {
             System.out.println(",,,,,"+arr.length);
@@ -113,14 +122,15 @@ public class venusTypeController {
 
 
 
-            i = venuesTypeService.delete(venuestypeExample);
+            i = venuesTypeService.deleteByExample(venuestypeExample);
 
         } catch (Exception e) {
 
             e.printStackTrace();
         }
         HashMap map = new HashMap<String,List>();
-        //map.put("datas",list);
+        map.put("datas",search(venuestype));
+        map.put("del",i);
 
         return new ModelAndView("/jsp/venues_type/list",map);
     }

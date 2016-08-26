@@ -145,9 +145,51 @@
             <!--<columnOverride column="" javaType=""	jdbcType=""	typeHandler=""	delimitedColumnName="" />-->
 
      <!--   </table>-->
-              <!-- <table tableName="venuesType" schema="hot">
-                  <generatedKey column="venuesType_id" sqlStatement="MySql" identity="" type="pre"/>
-               </table>-->
+               <table tableName="coach" schema="hot">
+                  <generatedKey column="coach_id" sqlStatement="MySql" identity="" type="pre"/>
+               </table>
+              <table tableName="address" schema="hot">
+            <generatedKey column="address_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="award" schema="hot">
+            <generatedKey column="award_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="certificate" schema="hot">
+            <generatedKey column="certificate_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="coach_certificate" schema="hot">
+            <generatedKey column="coach_certificate_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="coach_sport" schema="hot">
+            <generatedKey column="coach_sport_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="coach_venues" schema="hot">
+            <generatedKey column="coach_venues_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="course" schema="hot">
+            <generatedKey column="course_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="location" schema="hot">
+            <generatedKey column="location_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="orders" schema="hot">
+            <generatedKey column="orders_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="role_permission" schema="hot">
+            <generatedKey column="role_permission_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="schedule" schema="hot">
+            <generatedKey column="schedule_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="sport" schema="hot">
+            <generatedKey column="sport_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="venues" schema="hot">
+            <generatedKey column="venues_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
+        <table tableName="t_prov_city_area_street" schema="hot">
+            <generatedKey column="id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>
               <!-- <table tableName="permission" schema="hot">
                   <generatedKey column="permission_id" sqlStatement="MySql" identity="" type="pre"/>
                </table>-->
