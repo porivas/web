@@ -5,8 +5,8 @@
 </head>
 <body>
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+     aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -14,13 +14,13 @@
                         data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
-                <h4 class="modal-title" id="myModalLabel">
+                <h4 class="modal-title" id="addModalLabel">
                     新增场馆类型
                 </h4>
             </div>
             <div class="modal-body">
 
-                <form class="form-horizontal" role="form" id="addform">
+                <form class="form-horizontal" role="form" id="addForm">
                     <br>
                     <br>
                     <div class="form-group">
@@ -46,12 +46,21 @@
                 <button type="button" class="btn btn-default"
                         data-dismiss="modal">关闭
                 </button>
-                <button type="button" class="btn btn-primary" id="addButton">
+                <button type="button" class="btn btn-primary" id="addButton" name="addButton">
                     提交
                 </button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+
+<script type="text/javascript">
+    $('#addButton').click(function () {
+                addMav("Mav","venuesType");
+
+            }
+    );
+
+</script>
 </body>
 </html>

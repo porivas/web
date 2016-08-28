@@ -24,6 +24,9 @@
 
                     </em> 新增
                 </button>
+                <button class="btn btn-default" type="button" id="showModifyButton">
+                    <em class="glyphicon glyphicon-pencil"></em>
+                    修改</button>
 
                 <button class="btn btn-default" type="button" id="deleteButton">
                     <em class="glyphicon glyphicon-trash"></em>
@@ -37,6 +40,55 @@
     </br>
 
 
+<!-- search bar -->
+    <div class="panel-group" id="accordion">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion"
+                   href="#collapseOne">
+                    高级查询
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <form id="searchForm" role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="venuestypeName" class="col-md-2 control-label">类型:</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" id="venuestypeName" name="venuestypeName"
+                                   placeholder="请输入">
+                        </div>
+
+                        <label for="comments" class="col-md-2 control-label">说明:</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" id="comments" name="comments"
+                                   placeholder="请输入">
+                        </div>
+                   </div>
+
+
+                    <div class="row">
+                        <div class="col-md-1 pull-right">
+                        <button class="btn btn-primary btn-large" id="searchButton" type="button">查询</button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- search bar -->
+
+<br>
+    <br>
+
+<!--datalist -->
 
     <div class="row clearfix" id="dataList">
         <div class="col-md-12 column">
@@ -44,10 +96,19 @@
         </div>
     </div>
 
+<!-- datalist-->
 
+
+    <!-- add dialog-->
     <div class="row " id="addDialog">
 
         </div>
+
+
+    <!-- modify dialog-->
+    <div class="row " id="modifyDialog">
+
+    </div>
 
 
 </div>
@@ -58,96 +119,36 @@
 var searchData;
     $(document).ready(function() {
         $('#addDialog').load("/jsp/venues_type/add.jsp");
-        search();
+        search("Mav","venuesType");
     })
 
 
+$(function () { $('#collapseOne').collapse('hide')});
+
+$('#searchButton').click(function(){
+    search("Mav","venuesType");
+});
 
 
-
-    $('#addButton').click(search);
 
 
 
 
    $('#deleteButton').click(function(){
-
-       var array = new Array(); //用于保存 选中的那一条数据的ID
-       var flag; //判断是否一个未选
-       $("input[name='checkItem']:checkbox").each(function() { //遍历所有的name为checkItem的 checkbox
-           if ($(this).attr("checked")) { //判断是否选中
-               flag = true; //只要有一个被选择 设置为 true
-           }
-       })
-       if (flag) {
-           $("input[name='checkItem']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox
-               if ($(this).attr("checked")) { //判断是否选中
-                   var ttd = $(this).parent('td').next('td');
-                   alert(ttd.text());
-                   array.push($(this).text()); //将选中的值 添加到 array中
-
-               }
-           })
-           deleteMav(array);
-           //window.self.location = "deleteUser?info=" + array;
-       } else {
-           alert("请至少选择一个用户");
-       }
-
-
+       deleteChosen("venuesType");
    });
 
+$('#showModifyButton').click(function(){
+    showModify("venuesType");
 
 
-function search(){
-
-    $.ajax({
-        cache: true,
-        type: "POST",
-        url:"/venuesType/searchMav.do",
-        data:$('#addform').serialize(),
-        async: false,
-        //dataType:"json",
-        error: function(request) {
-            $('#myModal').modal('hide');
-            alert("失败");
-
-        },
-        success: function(data) {
-            $('#myModal').modal('hide');
-
-
-            $('#dataList').html(data);
-
-        }
-    });
-
-}
+});
 
 
 
-function deleteMav(array){
 
-    $.ajax({
-        cache: true,
-        type: "POST",
-        url:"/venuesType/deleteMav.do",
-        data:{'arr':array,$('#addform').serialize()},
-        async: false,
-        //dataType:"json",
-        error: function(request) {
-            alert("失败");
 
-        },
-        success: function(data) {
 
-            $('#dataList').html(data);
-            search();
-
-        }
-    });
-
-}
 
 
 

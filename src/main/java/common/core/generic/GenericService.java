@@ -1,5 +1,7 @@
 package common.core.generic;
 
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -12,6 +14,16 @@ import java.util.List;
  * @since 2014年6月9日 下午6:14:06
  */
 public interface GenericService<Model, PK> {
+
+
+    <Example>int countByExample(Example example);
+
+    int updateByPrimaryKeySelective(Model record);
+
+
+    <Example>int updateByExample( Model record,  Example example);
+
+    <Example>int updateByExampleSelective( Model record,  Example example);
 
     <Example>int deleteByExample(Example example);
 

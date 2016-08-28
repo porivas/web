@@ -3,6 +3,7 @@ package admin.controller;
 import admin.model.Venuestype;
 import admin.model.VenuestypeExample;
 import admin.service.VenuesTypeService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,9 +34,10 @@ public class venusTypeController {
     private VenuesTypeService venuesTypeService;
 
     @ResponseBody
-    @RequestMapping(value="/add.do")
-    public List<String> add(@Valid Venuestype venuestype){
+    @RequestMapping(value="/addJson.do")
+    public List<String> addJson(@Valid Venuestype venuestype){
         List list  = new ArrayList();
+        //System.out.println("add....");
         int i = 0;
         try {
              i = venuesTypeService.insertSelective(venuestype);
@@ -51,31 +53,13 @@ public class venusTypeController {
     @ResponseBody
     @RequestMapping(value="/searchJson.do")
     public List<Venuestype> searchJson(@Valid Venuestype venuestype){
-        List list  = new ArrayList();
-        try {
-            VenuestypeExample venuestypeExample = new VenuestypeExample();
-            if(venuestype.getVenuestypeName()!=null){
-                venuestypeExample.or().andVenuestypeNameLike(venuestype.getVenuestypeName());
-            }
-
-            if(venuestype.getComments()!=null){
-                venuestypeExample.or().andCommentsLike(venuestype.getComments());
-            }
-
-            list = venuesTypeService.selectByExample(venuestypeExample);
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-        System.out.println(list.toString());
-
-        return list;
+       return search(venuestype);
     }
 
     @RequestMapping(value="/searchMav.do")
     public ModelAndView searchMav(@Valid Venuestype venuestype){
 
+        System.out.println("searchMav...");
         HashMap<String,List<Venuestype>> map = new HashMap<String,List<Venuestype>>();
         map.put("datas",search(venuestype));
 
@@ -83,16 +67,41 @@ public class venusTypeController {
     }
 
 
+    @RequestMapping(value = "/searchByKeyMav.do")
+    public ModelAndView searchByKeyMav(HttpServletRequest request,
+                                       HttpServletResponse response,
+                                       ModelMap model,
+                                       @RequestParam(value = "arr[]") Integer[] arr){
+        HashMap<String,Venuestype> map = new HashMap<String,Venuestype>();
+        VenuestypeExample venuestypeExample = new VenuestypeExample();
+
+        if(arr.length==1) {
+            Venuestype venuestype = new Venuestype();
+            venuestype.setVenuestypeId(arr[0].intValue());
+            map.put("data",search(venuestype).get(0));
+
+        }
+
+
+
+        return new ModelAndView("/jsp/venues_type/modify",map);
+    }
+
+
     public List<Venuestype> search(@Valid Venuestype venuestype){
         List<Venuestype>list  = new ArrayList<Venuestype>();
         try {
             VenuestypeExample venuestypeExample = new VenuestypeExample();
-            if(venuestype.getVenuestypeName()!=null){
-                venuestypeExample.or().andVenuestypeNameLike(venuestype.getVenuestypeName());
+            if(venuestype.getVenuestypeId()!= null){
+                venuestypeExample.or().andVenuestypeIdEqualTo(venuestype.getVenuestypeId());
             }
 
-            if(venuestype.getComments()!=null){
-                venuestypeExample.or().andCommentsLike(venuestype.getComments());
+            if(!StringUtils.isBlank(venuestype.getVenuestypeName())){
+                venuestypeExample.or().andVenuestypeNameLike("%"+venuestype.getVenuestypeName()+"%");
+            }
+
+            if(!StringUtils.isBlank(venuestype.getComments())){
+                venuestypeExample.or().andCommentsLike("%"+venuestype.getComments()+"%");
             }
 
             list =(List<Venuestype>) venuesTypeService.selectByExample(venuestypeExample);
@@ -108,11 +117,10 @@ public class venusTypeController {
 
 
     @RequestMapping(value="/deleteMav.do")
-    public ModelAndView deleteMav(HttpServletRequest request,
+    public void deleteMav(HttpServletRequest request,
                                   HttpServletResponse response,
                                   ModelMap model,
-                                  @RequestParam(value = "arr[]") Integer[] arr,
-                                  @RequestParam(value = "forms") Venuestype venuestype){
+                                  @RequestParam(value = "arr[]") Integer[] arr){
         int i=0;
         try {
             System.out.println(",,,,,"+arr.length);
@@ -127,12 +135,29 @@ public class venusTypeController {
         } catch (Exception e) {
 
             e.printStackTrace();
-        }
-        HashMap map = new HashMap<String,List>();
-        map.put("datas",search(venuestype));
-        map.put("del",i);
+            model.addAttribute("error", "删除失败");
 
-        return new ModelAndView("/jsp/venues_type/list",map);
+        }
+
+    }
+
+
+
+    @ResponseBody
+    @RequestMapping(value="/modifyJson.do")
+    public List<String> modifyJson(@Valid Venuestype venuestype){
+        List list  = new ArrayList();
+        int i = 0;
+        try {
+
+            i = venuesTypeService.updateByPrimaryKeySelective(venuestype);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        list.add(String.valueOf(i));
+        return list;
     }
 
 

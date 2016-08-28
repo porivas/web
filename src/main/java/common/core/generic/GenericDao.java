@@ -1,6 +1,8 @@
 package common.core.generic;
 
 
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -15,6 +17,16 @@ import java.util.List;
  * @since 2014年6月9日 下午6:14:06
  */
 public interface GenericDao<Model, PK> {
+
+    <Example>int countByExample(Example example);
+
+    int updateByPrimaryKeySelective(Model record);
+
+
+
+    <Example>int updateByExample(@Param("record") Model record, @Param("example") Example example);
+
+    <Example>int updateByExampleSelective(@Param("record") Model record, @Param("example") Example example);
 
 
     <Example>int deleteByExample(Example example);

@@ -63,7 +63,7 @@ public class UserController {
             // 身份验证失败
             e.printStackTrace();
             model.addAttribute("error", "用户名或密码错误 ！");
-            return "login.jsp";
+            //return "login.jsp";
         }
         return "redirect:/jsp/main.jsp";
     }

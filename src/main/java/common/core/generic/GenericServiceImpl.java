@@ -22,6 +22,15 @@ public abstract class GenericServiceImpl<Model, PK> implements GenericService<Mo
     public abstract GenericDao<Model, PK> getDao();
 
 
+    public <Example>int countByExample(Example example){
+        return getDao().countByExample(example);
+    }
+
+    public int updateByPrimaryKeySelective(Model record){
+        return getDao().updateByPrimaryKeySelective(record);
+    }
+
+
     public <Example>int deleteByExample(Example example){
         return  getDao().deleteByExample(example);
     }
@@ -32,5 +41,13 @@ public abstract class GenericServiceImpl<Model, PK> implements GenericService<Mo
 
     public <Example>List<Model> selectByExample(Example example){
         return getDao().selectByExample(example);
+    }
+
+    public <Example>int updateByExample( Model record,  Example example){
+        return getDao().updateByExample(record,example);
+    }
+
+    public <Example>int updateByExampleSelective( Model record,  Example example){
+        return getDao().updateByExampleSelective(record,example);
     }
 }

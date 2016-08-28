@@ -145,7 +145,7 @@
             <!--<columnOverride column="" javaType=""	jdbcType=""	typeHandler=""	delimitedColumnName="" />-->
 
      <!--   </table>-->
-               <table tableName="coach" schema="hot">
+  <!--             <table tableName="coach" schema="hot">
                   <generatedKey column="coach_id" sqlStatement="MySql" identity="" type="pre"/>
                </table>
               <table tableName="address" schema="hot">
@@ -159,11 +159,11 @@
         </table>
         <table tableName="coach_certificate" schema="hot">
             <generatedKey column="coach_certificate_id" sqlStatement="MySql" identity="" type="pre"/>
+        </table>-->
+        <table tableName="venues" schema="hot">
+            <generatedKey column="venues_id" sqlStatement="MySql" identity="" type="pre"/>
         </table>
-        <table tableName="coach_sport" schema="hot">
-            <generatedKey column="coach_sport_id" sqlStatement="MySql" identity="" type="pre"/>
-        </table>
-        <table tableName="coach_venues" schema="hot">
+<!--        <table tableName="coach_venues" schema="hot">
             <generatedKey column="coach_venues_id" sqlStatement="MySql" identity="" type="pre"/>
         </table>
         <table tableName="course" schema="hot">
@@ -189,7 +189,7 @@
         </table>
         <table tableName="t_prov_city_area_street" schema="hot">
             <generatedKey column="id" sqlStatement="MySql" identity="" type="pre"/>
-        </table>
+        </table>-->
               <!-- <table tableName="permission" schema="hot">
                   <generatedKey column="permission_id" sqlStatement="MySql" identity="" type="pre"/>
                </table>-->
