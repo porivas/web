@@ -4,7 +4,7 @@ import admin.model.*;
 import admin.service.AddressDictService;
 import admin.service.VenuesService;
 import admin.service.VenuesTypeService;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +31,6 @@ public class venuesController {
     private VenuesTypeService venuesTypeService;
     @Resource
     private AddressDictService addressDictService;
-
 
     @ResponseBody
     @RequestMapping(value = "/addJson.do")

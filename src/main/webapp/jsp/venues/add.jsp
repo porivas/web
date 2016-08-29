@@ -7,27 +7,8 @@
     <script src="/js/demo.js" type="text/javascript"></script>
 </head>
 <body>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
-     aria-labelledby="addModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width:800px;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close"
-                        data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="addModalLabel">
-                    新增场馆
-                </h4>
-            </div>
-            <div class="modal-body">
+<!-- add模态框（Modal） -->
 
-                <form class="form-horizontal" role="form" id="addForm">
-                    <br>
-                    <br>
-                    <div class="row clearfix">
-                        <div class="col-md-12 column">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
@@ -153,9 +134,7 @@
     </div>
 
 
-    <div style="min-height: 450px; margin-top: 5px; width:500px;" id="map">
-        aaa
-    </div>
+
 
     <!--------------------------------------------------------------------map-end-------------------------------------->
 
@@ -188,25 +167,7 @@
                             </div>
 
 
-                        </div>
-                    </div>
 
-
-                </form>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                id="closeAdd">关闭
-                </button>
-                <button type="button" class="btn btn-primary" id="addButton" name="addButton">
-                    提交
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 
 <script type="text/javascript">
     $('#addButton').click(function () {

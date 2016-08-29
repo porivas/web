@@ -3,7 +3,7 @@ package admin.controller;
 import admin.model.Venuestype;
 import admin.model.VenuestypeExample;
 import admin.service.VenuesTypeService;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

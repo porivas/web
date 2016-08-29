@@ -67,17 +67,113 @@
 
 
     <!-- add dialog-->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+         aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:800px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="addModalLabel">
+                        新增场馆
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal" role="form" id="addForm">
+                        <br>
+                        <br>
+                        <div class="row clearfix">
+                            <div class="col-md-12 column">
+
     <div class="row " id="addDialog">
 
+
+
     </div>
+                                <div class="panel panel-default"><!--map-->
+                                    <div class="panel-body" id="addressInfo">
+                                        <div style="min-height: 450px; margin-top: 5px; width:500px;" id="map">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
 
 
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            id="closeAdd">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" id="addButton" name="addButton">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+<!--add dialog end  -->
     <!-- modify dialog-->
+    <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog"
+         aria-labelledby="modifyModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:800px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="modifyModalLabel">
+                        修改场馆
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal" role="form" id="modifyForm">
+                        <br>
+                        <br>
+                        <div class="row clearfix">
+                            <div class="col-md-12 column">
+
     <div class="row " id="modifyDialog">
 
     </div>
+                                <div class="panel panel-default"><!--map-->
+                                    <div class="panel-body" id="addressInfo2">
+                                        <div style="min-height: 450px; margin-top: 5px; width:500px;" id="map2">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
 
 
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            id="closeModify">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" id="modifyButton" name="modifyButton">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+<!-- modifyDialog end-->
     <div class="row " id="viewDialog">
 
     </div>
@@ -90,15 +186,19 @@
     var map; // 创建Map实例
     var point;
     var inputBox;
+    var map2; // 创建Map实例
+    var point2;
+    var inputBox2;
 
     $(document).ready(function () {
         showAddMav("venues");
 
         initSearch("Mav", "venues");
         search("Mav", "venues");
-        alert("map content"+$('#map').html());
         map = new BMap.Map("map");
+        map2 = new BMap.Map("map2");
         loadPlace(116.404, 39.915, 12);
+        loadPlace2(116.404, 39.915, 12);
         map.addEventListener("click", function (e) {
             //alert(e.point.lng + "," + e.point.lat);
             $('#lng').val(e.point.lng);
@@ -107,6 +207,16 @@
             inputBox.value = e.point.lng + "," + e.point.lat;
 
         });
+        map2.addEventListener("click", function (e) {
+            //alert(e.point.lng + "," + e.point.lat);
+            $('#lng').val(e.point.lng);
+            $('#lat').val(e.point.lat);
+            inputBox2 = document.getElementById("pointInput");
+            inputBox2.value = e.point.lng + "," + e.point.lat;
+
+        });
+
+
     })
 
 
@@ -163,7 +273,38 @@
 
         }
     }
+    function loadPlace2(longitude, latitude, level) {
+        if (parseFloat(longitude) > 0 || parseFloat(latitude) > 0) {
 
+            level = level || 12;
+            //绘制地图
+            point2 = new BMap.Point(longitude, latitude); //地图中心点
+            map2.centerAndZoom(point2, level); // 初始化地图,设置中心点坐标和地图级别。
+            map2.setCurrentCity("北京");
+            map2.enableScrollWheelZoom(true); //启用滚轮放大缩小
+            //向地图中添加缩放控件
+            var ctrlNav = new window.BMap.NavigationControl({
+                anchor: BMAP_ANCHOR_TOP_LEFT,
+                type: BMAP_NAVIGATION_CONTROL_LARGE
+            });
+            map2.addControl(ctrlNav);
+
+            //向地图中添加缩略图控件
+            var ctrlOve = new window.BMap.OverviewMapControl({
+                anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+                isOpen: 1
+            });
+            map2.addControl(ctrlOve);
+
+            //向地图中添加比例尺控件
+            var ctrlSca = new window.BMap.ScaleControl({
+                anchor: BMAP_ANCHOR_BOTTOM_LEFT
+            });
+            map2.addControl(ctrlSca);
+
+
+        }
+    }
 
 
     function setPlace() {

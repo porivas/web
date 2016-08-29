@@ -23,6 +23,7 @@
                 /404 = anon
                 /500 = anon
                 <!-- 其他资源需要认证 -->
+               <!-- /jsp/** = authc-->
                 /jsp/** = authc
             </value>
         </property>
